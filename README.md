@@ -2,8 +2,13 @@
 
 ## Steps to run install the platform
 
- - Clone the project
-  - ```git clone https://github.com/reza-t/3x-ui.git```
-- navigate to the v-automation folder and instll the v2ray platform
-  - you need to pass four parameters to the installation file 
-  - ```bash install.sh <3x-ui version> <username> <password> <port>```
+### checkout the ip address is valod
+
+```bash startNginx.sh```
+
+### install the v2ray platform
+if the ip address is accessable in you country move to next steps.
+
+The `install.sh`` will be uninstall the nginx first and then install the platform. 
+
+ ```bash install.sh <3x-ui version> <username> <password> <port>```

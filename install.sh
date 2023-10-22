@@ -3,6 +3,8 @@
 sudo apt update -y
 sudo apt upgrade -y
 
+sudo apt-get purge nginx nginx-common
+
 # Set up UFW firewall rules
 echo "Configuring UFW..."
 sudo ufw default deny incoming
