@@ -14,13 +14,13 @@ The `install.sh` will be uninstall the nginx first and then install the platform
  ```bash install.sh <3x-ui version> <Do you want to continue with the modification [y/n]?> <username> <password> <port>```
 
 Example: 
-`bash install.sh v1.7.9 y root 123456778 8443`
+`bash install.sh v1.7.9 y root 123456778 7575`
 
 if you skip passing the parameters during the installation you will get prompt to enter the parameters.
 
 ### Setup Config
 
-login to the platform by navigating to the <ipaddress>:8443 and copy the config from the `xray-configuration-template.json` to the `/Panel Settings/Xray Configuration/Complete Template`.
+login to the platform by navigating to the <ipaddress>:7575 and copy the config from the `xray-configuration-template.json` to the `/Panel Settings/Xray Configuration/Complete Template`.
 
 ### Create the Inbound
 
