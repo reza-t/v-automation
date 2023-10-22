@@ -1,9 +1,7 @@
 #!/bin/bash
 
-if [ "$EUID" -ne 0 ]; then
-    echo "Please run this script with sudo."
-    exit 1
-fi
+sudo apt update -y
+sudo apt upgrade -y
 
 # Set up UFW firewall rules
 echo "Configuring UFW..."
