@@ -1,5 +1,8 @@
 #!/bin/bash
-
+is_confirm="$2"
+get_username="$3"
+get_password="$4"
+get_port="$5"
 sudo apt update -y
 sudo apt upgrade -y
 
@@ -11,7 +14,7 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow 22
 sudo ufw allow 443
-sudo ufw allow 8443
+sudo ufw allow "$get_port"
 sudo ufw allow 8080
 sudo ufw enable
 
@@ -20,10 +23,7 @@ green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
 
-is_confirm="$2"
-get_username="$3"
-get_password="$4"
-get_port="$5"
+
 
 
 cur_dir=$(pwd)
