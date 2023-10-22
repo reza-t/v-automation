@@ -24,11 +24,11 @@ login to the platform by navigating to the <ipaddress>:8443 and copy the config 
 
 Configure the Inbound and here is some example:
 
-- protocol: vless
-- port: 8080 or 443
-- Turn on Reality
-- Transmission: TCP
-- Dest: www.speedtest.net:443
-- Server Names: www.speedtest.net, speedtest.net
+- protocol: `vless`
+- port:`8080` or `443`
+- Turn on `Reality`
+- Transmission: `TCP`
+- Dest: `www.speedtest.net:443`
+- Server Names: `www.speedtest.net, speedtest.net`
 
 Click on `Get New Key`
