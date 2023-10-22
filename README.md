@@ -15,3 +15,20 @@ The `install.sh`` will be uninstall the nginx first and then install the platfor
 
 Example: 
 ```bash install.sh v1.7.9 y root 123456778 8443````
+
+### Setup Config
+
+login to the platform by navigating to the <ipaddress>:8443 and copy the config from the `xray-configuration-template.json` to the `/Panel Settings/Xray Configuration/Complete Template`.
+
+### Create the Inbound
+
+Configure the Inbound and here is some example:
+
+- protocol: vless
+- port: 8080 or 443
+- Turn on Reality
+- Transmission: TCP
+- Dest: www.speedtest.net:443
+- Server Names: www.speedtest.net, speedtest.net
+
+Click on `Get New Key`
