@@ -3,7 +3,7 @@
 sudo apt update -y
 sudo apt upgrade -y
 
-sudo apt-get purge nginx nginx-common
+sudo apt-get purge nginx nginx-common -y
 
 # Set up UFW firewall rules
 echo "Configuring UFW..."
