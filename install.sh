@@ -99,32 +99,49 @@ install_base() {
 # This function will be called when user installed x-ui out of sercurity
 config_after_install() {
     echo -e "${yellow}Install/update finished! For security it's recommended to modify panel settings ${plain}"
-    # read -p "Do you want to continue with the modification [y/n]? ": config_confirm
-    if [[ "$is_confirm" == "y" || "$is_confirm" == "Y" ]]; then
-        echo -e "${yellow}Your username will be: "$get_username""
-        echo -e "${yellow}Your password will be:"$get_password""
-        echo -e "${yellow}Your panel port is: "$get_port""
-        echo -e "${yellow}Initializing, please wait..."
+    if [[ ("$is_confirm" == "y" || "$is_confirm" == "Y" ||
+      "$get_password" != "" || "$get_username" != "" || "$get_port" != "") ]]; then
+        echo -e "${yellow}Your username will be: $get_username${plain}"
+        echo -e "${yellow}Your password will be: $get_password${plain}"
+        echo -e "${yellow}Your panel port is: $get_port${plain}"
+        echo -e "${yellow}Initializing, please wait...${plain}"
         /usr/local/x-ui/x-ui setting -username "$get_username" -password "$get_password"
         echo -e "${yellow}Account name and password set successfully!${plain}"
         /usr/local/x-ui/x-ui setting -port "$get_port"
         echo -e "${yellow}Panel port set successfully!${plain}"
-    else
-        echo -e "${red}cancel...${plain}"
-        if [[ ! -f "/etc/x-ui/x-ui.db" ]]; then
-            local usernameTemp="freeworld"
-            local passwordTemp="changeMe"
-            /usr/local/x-ui/x-ui setting -username ${usernameTemp} -password ${passwordTemp}
-            echo -e "this is a fresh installation,will generate random login info for security concerns:"
-            echo -e "###############################################"
-            echo -e "${green}username:${usernameTemp}${plain}"
-            echo -e "${green}password:${passwordTemp}${plain}"
-            echo -e "###############################################"
-            echo -e "${red}if you forgot your login info,you can type x-ui and then type 7 to check after installation${plain}"
+    elif [[ ("$get_password" == "" || "$get_username" == "" || "$get_port" == "" ||
+        "$is_confirm" == "") ]]; then
+        read -p "Do you want to continue with the modification [y/n]? " config_confirm
+        if [[ "$config_confirm" == "y" || "$config_confirm" == "Y" ]]; then
+            read -p "Please set up your username:" config_account
+            echo -e "${yellow}Your username will be: $config_account${plain}"
+            read -p "Please set up your password:" config_password
+            echo -e "${yellow}Your password will be: $config_password${plain}"
+            read -p "Please set up the panel port:" config_port
+            echo -e "${yellow}Your panel port is: $config_port${plain}"
+            echo -e "${yellow}Initializing, please wait...${plain}"
+            /usr/local/x-ui/x-ui setting -username "$config_account" -password "$config_password"
+            echo -e "${yellow}Account name and password set successfully!${plain}"
+            /usr/local/x-ui/x-ui setting -port "$config_port"
+            echo -e "${yellow}Panel port set successfully!${plain}"
         else
-            echo -e "${red} this is your upgrade,will keep old settings,if you forgot your login info,you can type x-ui and then type 7 to check${plain}"
+            echo -e "${red}Cancel...${plain}"
+            if [[ ! -f "/etc/x-ui/x-ui.db" ]]; then
+                local usernameTemp="freeworld"
+                local passwordTemp="changeMe"
+                /usr/local/x-ui/x-ui setting -username "$usernameTemp" -password "$passwordTemp"
+                echo -e "This is a fresh installation, will generate random login info for security concerns:"
+                echo -e "###############################################"
+                echo -e "${green}Username: $usernameTemp${plain}"
+                echo -e "${green}Password: $passwordTemp${plain}"
+                echo -e "###############################################"
+                echo -e "${red}If you forgot your login info, you can type 'x-ui' and then type '7' to check after installation${plain}"
+            else
+                echo -e "${red}This is your upgrade, will keep old settings. If you forgot your login info, you can type 'x-ui' and then type '7' to check${plain}"
+            fi
         fi
     fi
+
     /usr/local/x-ui/x-ui migrate
 }
 

@@ -16,6 +16,8 @@ The `install.sh`` will be uninstall the nginx first and then install the platfor
 Example: 
 ```bash install.sh v1.7.9 y root 123456778 8443````
 
+if you skip passing the parameters during the installation you will get prompt to enter the parameters.
+
 ### Setup Config
 
 login to the platform by navigating to the <ipaddress>:8443 and copy the config from the `xray-configuration-template.json` to the `/Panel Settings/Xray Configuration/Complete Template`.
