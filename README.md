@@ -9,12 +9,12 @@
 ### install the v2ray platform
 if the ip address is accessable in you country move to next steps.
 
-The `install.sh`` will be uninstall the nginx first and then install the platform. 
+The `install.sh` will be uninstall the nginx first and then install the platform. 
 
  ```bash install.sh <3x-ui version> <username> <password> <port>```
 
 Example: 
-```bash install.sh v1.7.9 y root 123456778 8443````
+`bash install.sh v1.7.9 y root 123456778 8443`
 
 if you skip passing the parameters during the installation you will get prompt to enter the parameters.
 
