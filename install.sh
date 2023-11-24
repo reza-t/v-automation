@@ -8,12 +8,18 @@ sudo apt upgrade -y
 
 sudo apt-get purge nginx nginx-common -y
 
+# Enable fail2ban
+apt install fail2ban
+sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+
 # Set up UFW firewall rules
 echo "Configuring UFW..."
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow 22
 sudo ufw allow 443
+sudo ufw allow 444
 sudo ufw allow "$get_port"
 sudo ufw allow 8080
 sudo ufw enable
