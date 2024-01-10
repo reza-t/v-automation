@@ -19,7 +19,6 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow 22
 sudo ufw allow 443
-sudo ufw allow 444
 sudo ufw allow "$get_port"
 sudo ufw allow 8080
 sudo ufw enable
